@@ -898,6 +898,15 @@ La mission dura 23 ans. Face à la persécution mecquoise, les musulmans émigr�
         </header>
 
         <div class="px-4 space-y-4">
+
+            
+            <div class="card p-5 relative overflow-hidden mb-4">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                <div class="flex items-center gap-2 mb-2 relative z-10">
+                    <p class="text-xs font-black uppercase tracking-widest text-amber-400">Rappel du jour ✨</p>
+                </div>
+                <p class="text-sm text-stone-200 leading-relaxed relative z-10 italic">"Le serviteur n'est jamais aussi proche de son Seigneur que lorsqu'il est prosterné."<br><br>Prends un instant aujourd'hui pour poser ton front au sol, poser tes fardeaux, et Lui parler à cœur ouvert. Il t'attend. 🤍</p>
+            </div>
             <!-- Prayers -->
             <div class="card p-5">
                 <div class="flex justify-between items-center mb-4">
@@ -983,6 +992,16 @@ La mission dura 23 ans. Face à la persécution mecquoise, les musulmans émigr�
             <p class="text-stone-500 text-sm mt-1">Leurs histoires, leurs leçons</p>
         </header>
 
+        <div class="mb-5 p-4 rounded-2xl bg-white/5 border border-white/10">
+            <div class="flex items-center gap-2 mb-2">
+                <i data-lucide="lightbulb" class="w-4 h-4 text-amber-400"></i>
+                <h2 class="text-xs font-black uppercase tracking-widest text-amber-400">Petit conseil</h2>
+            </div>
+            <p class="text-xs text-stone-300 leading-relaxed">Ce que tu vas lire ici, ce sont les bases essentielles. N'hésite pas à approfondir en regardant des vidéos ou en lisant des livres plus complets. Et surtout : <strong>raconte ces histoires autour de toi !</strong> C'est le meilleur moyen de les retenir et de gagner des hassanates facilement en partageant le rappel. 🌿</p>
+        </div>
+
+        
+
         <div id="prophet-list">
             <div class="grid grid-cols-2 gap-3">
                 <button onclick="window.showProphet(0)" class="card p-4 text-left active:scale-95 transition-all"><span class="text-2xl mb-1 block">🌿</span><p class="font-black text-sm text-white">Adam ﷺ</p><p class="text-[10px] text-stone-500">Le premier homme</p></button>
@@ -1035,21 +1054,14 @@ La mission dura 23 ans. Face à la persécution mecquoise, les musulmans émigr�
             <p class="text-stone-500 text-sm mt-1">Lettres, voyelles, noms d'Allah</p>
         </header>
 
-        <!-- Letters Grid -->
         <div class="card p-5 mb-4">
-            <h2 class="text-xs font-black uppercase tracking-widest text-amber-400 mb-4">Alphabet arabe</h2>
-            <div class="grid grid-cols-7 gap-2 mb-5">
-                <!-- Rendered by JS -->
-            </div>
-            <!-- Selected letter display -->
-            <div class="rounded-2xl p-5 text-center mb-0" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)">
-                <button onclick="window.speakLetter()" class="text-6xl amiri mb-2 block mx-auto cursor-pointer hover:opacity-80 transition-opacity" id="letter-big" title="Appuie pour écouter">ا</button>
-                <p class="font-black text-lg text-amber-400" id="letter-name">Alif</p>
-                <p class="text-stone-300 text-sm" id="letter-sound">Son : â / a</p>
-                <p class="text-stone-500 text-xs mt-1" id="letter-example">Ex : أَلَم (Alam - douleur)</p>
-                <button onclick="window.speakLetter()" class="mt-3 bg-amber-400/10 border border-amber-400/30 text-amber-400 text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-xl flex items-center gap-2 mx-auto">🔊 Écouter en arabe</button>
-            </div>
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xs font-black uppercase tracking-widest text-amber-400">Alphabet arabe</h2>
+        <span id="letters-counter" class="text-amber-400 font-black text-sm">0/28</span>
+    </div>
+    <div class="grid grid-cols-2 gap-3 mb-5" id="arabic-letters-grid">
         </div>
+</div>
 
         <!-- Vowels -->
         <div class="card p-5 mb-4">
@@ -1059,8 +1071,11 @@ La mission dura 23 ans. Face à la persécution mecquoise, les musulmans émigr�
 
         <!-- Allah Names - scrollable list -->
         <div class="card p-5 mb-4">
-            <h2 class="text-xs font-black uppercase tracking-widest text-emerald-400 mb-1">Les 99 Noms d'Allah</h2>
-            <p class="text-stone-500 text-xs mb-4">Appuie sur un nom pour voir la signification</p>
+    <div class="flex justify-between items-center mb-1">
+        <h2 class="text-xs font-black uppercase tracking-widest text-emerald-400">Les 99 Noms d'Allah</h2>
+        <span id="allah-names-counter" class="text-emerald-400 font-black text-sm">0/99</span>
+    </div>
+    <p class="text-stone-500 text-xs mb-4">Appuie sur un nom pour voir la signification</p>
             <div id="allah-names-list" class="space-y-2 max-h-96 overflow-y-auto no-scrollbar pr-1"></div>
             <div id="aname-detail" class="hidden mt-4 rounded-2xl p-5" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2)">
                 <div class="text-4xl amiri text-emerald-300 text-center mb-2" id="aname-arabic">الرحمن</div>
@@ -1530,11 +1545,26 @@ window.initArabic = () => {
         {l:"ن",n:"Nûn",s:"n",ex:"نُور"},{l:"ه",n:"Hâ",s:"h doux",ex:"هِداية"},{l:"و",n:"Wâw",s:"w/û",ex:"وُضوء"},
         {l:"ي",n:"Yâ",s:"y/î",ex:"يَقين"}
     ];
-    const grid = document.querySelector('#tab-arabic .card .grid.grid-cols-7');
+    const grid = document.getElementById('arabic-letters-grid');
     if (grid && grid.children.length === 0) {
-        grid.innerHTML = ARABIC_LETTERS.map((l,i) =>
-            `<button onclick="showLetterInline(${i})" class="letter-btn w-full aspect-square rounded-xl flex items-center justify-center text-lg font-black amiri transition-all ${i===0?'bg-amber-400 text-stone-900':'bg-white/10 text-stone-300'}" data-idx="${i}">${l.l}</button>`
-        ).join('');
+        // === MISE À JOUR : Compteur Lettres ===
+        const learnedLetters = JSON.parse(localStorage.getItem('learnedLetters') || '{}');
+        const lettersCount = Object.values(learnedLetters).filter(v => v).length;
+        const lettersCounterEl = document.getElementById('letters-counter');
+        if (lettersCounterEl) lettersCounterEl.innerText = `${lettersCount}/28`;
+
+        grid.innerHTML = ARABIC_LETTERS.map((l,i) => `
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col items-center relative">
+                <button onclick="window.toggleLetter(${i}, this)" class="absolute top-3 right-3 w-5 h-5 rounded border ${learnedLetters[i] ? 'bg-amber-400 border-amber-400 text-stone-900' : 'border-stone-500 text-transparent'} flex items-center justify-center transition-all">
+                    <i data-lucide="check" class="w-3 h-3"></i>
+                </button>
+                
+                <button onclick="window.speakLetterText('${l.l}')" class="text-5xl amiri text-amber-400 mt-2 mb-2 hover:scale-110 transition-transform">${l.l}</button>
+                <p class="font-black text-sm text-white">${l.n}</p>
+                <p class="text-[10px] text-stone-400 mb-1">Son : ${l.s}</p>
+                <p class="text-[10px] text-stone-500 italic text-center">Ex : ${l.ex}</p>
+            </div>
+        `).join('');
     }
     // Vowels
     const vGrid = document.getElementById('vowels-grid');
@@ -1556,20 +1586,31 @@ window.initArabic = () => {
             </div>`
         ).join('');
     }
-    // Allah names - full 99 list
+    // === MISE À JOUR : Allah names - full 99 list avec Checkbox ===
     const listContainer = document.getElementById('allah-names-list');
     if (listContainer && listContainer.children.length === 0 && window.ALLAH_NAMES) {
-        listContainer.innerHTML = window.ALLAH_NAMES.map((n,i) =>
-            `<button onclick="showAllahNameFull(${i})" class="w-full flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-white/5 active:bg-white/10 transition-all text-left border-b border-white/5">
-                <span class="text-stone-500 text-[10px] font-black w-6 flex-shrink-0">${String(i+1).padStart(2,'0')}</span>
-                <span class="text-2xl amiri text-emerald-300 w-12 text-right flex-shrink-0">${n.a}</span>
-                <div class="flex-1 min-w-0">
-                    <p class="font-black text-xs text-stone-200">${n.n}</p>
-                    <p class="text-[10px] text-stone-500 truncate">${n.t}</p>
-                </div>
-                <i data-lucide="chevron-right" class="w-3 h-3 text-stone-600 flex-shrink-0"></i>
-            </button>`
-        ).join('');
+        const learnedNames = JSON.parse(localStorage.getItem('learnedNames') || '{}');
+        const namesCount = Object.values(learnedNames).filter(v => v).length;
+        const namesCounterEl = document.getElementById('allah-names-counter');
+        if (namesCounterEl) namesCounterEl.innerText = `${namesCount}/99`;
+
+        listContainer.innerHTML = window.ALLAH_NAMES.map((n,i) => `
+            <div class="w-full flex items-center gap-3 py-3 px-3 rounded-xl hover:bg-white/5 transition-all border-b border-white/5">
+                <button onclick="window.toggleAllahName(${i}, this)" class="w-5 h-5 rounded border ${learnedNames[i] ? 'bg-emerald-400 border-emerald-400 text-stone-900' : 'border-stone-500 text-transparent'} flex items-center justify-center transition-all flex-shrink-0">
+                    <i data-lucide="check" class="w-3 h-3"></i>
+                </button>
+                
+                <button onclick="window.showAllahNameFull(${i})" class="flex-1 flex items-center gap-3 text-left">
+                    <span class="text-stone-500 text-[10px] font-black w-6 flex-shrink-0">${String(i+1).padStart(2,'0')}</span>
+                    <span class="text-2xl amiri text-emerald-300 w-12 text-right flex-shrink-0">${n.a}</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-black text-xs text-stone-200">${n.n}</p>
+                        <p class="text-[10px] text-stone-500 truncate">${n.t}</p>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-3 h-3 text-stone-600 flex-shrink-0"></i>
+                </button>
+            </div>
+        `).join('');
     }
     lucide.createIcons();
 };
@@ -1593,48 +1634,65 @@ window.showAllahNameFull = (i) => {
     }
 };
 
-window.showLetterInline = (i) => {
-    const ARABIC_LETTERS = [
-        {l:"ا",n:"Alif",s:"â / a",ex:"أَلَم (Alam - douleur)"},{l:"ب",n:"Bâ",s:"b",ex:"بَيت (Bayt - maison)"},
-        {l:"ت",n:"Tâ",s:"t",ex:"تَوبة (Tawba - repentir)"},{l:"ث",n:"Thâ",s:"th (anglais)",ex:"ثَواب (Thawâb - récompense)"},
-        {l:"ج",n:"Jîm",s:"dj",ex:"جَنَّة (Janna - paradis)"},{l:"ح",n:"Hâ",s:"h aspiré",ex:"حَمد (Hamd - louange)"},
-        {l:"خ",n:"Khâ",s:"kh (r guttural)",ex:"خَير (Khayr - bien)"},{l:"د",n:"Dâl",s:"d",ex:"دُعاء (Du'â - invocation)"},
-        {l:"ذ",n:"Dhâl",s:"dh (th anglais)",ex:"ذِكر (Dhikr - rappel d'Allah)"},{l:"ر",n:"Râ",s:"r roulé",ex:"رَحمة (Rahma - miséricorde)"},
-        {l:"ز",n:"Zây",s:"z",ex:"زَكاة (Zakât - aumône)"},{l:"س",n:"Sîn",s:"s",ex:"سَلام (Salâm - paix)"},
-        {l:"ش",n:"Shîn",s:"ch",ex:"شُكر (Shukr - gratitude)"},{l:"ص",n:"Sâd",s:"s emphatique",ex:"صَبر (Sabr - patience)"},
-        {l:"ض",n:"Dâd",s:"d emphatique",ex:"ضَوء (Daw' - lumière)"},{l:"ط",n:"Tâ",s:"t emphatique",ex:"طَهارة (Tahâra - pureté)"},
-        {l:"ظ",n:"Dhâ",s:"dh emphatique",ex:"ظَفَر (Dhafar - victoire)"},{l:"ع",n:"'Ayn",s:"' (voyelle guttural)",ex:"عِلم ('Ilm - savoir)"},
-        {l:"غ",n:"Ghayn",s:"gh (r parisien)",ex:"غَفُور (Ghafûr - pardonneur)"},{l:"ف",n:"Fâ",s:"f",ex:"فَجر (Fajr - aube)"},
-        {l:"ق",n:"Qâf",s:"q guttural",ex:"قُرآن (Qur'ân)"},{l:"ك",n:"Kâf",s:"k",ex:"كِتاب (Kitâb - livre)"},
-        {l:"ل",n:"Lâm",s:"l",ex:"لَيل (Layl - nuit)"},{l:"م",n:"Mîm",s:"m",ex:"مَسجد (Masjid - mosquée)"},
-        {l:"ن",n:"Nûn",s:"n",ex:"نُور (Nûr - lumière)"},{l:"ه",n:"Hâ",s:"h doux",ex:"هِداية (Hidâya - guidance)"},
-        {l:"و",n:"Wâw",s:"w / û",ex:"وُضوء (Wudû - ablutions)"},{l:"ي",n:"Yâ",s:"y / î",ex:"يَقين (Yaqîn - certitude)"}
-    ];
-    const l = ARABIC_LETTERS[i];
-    document.getElementById('letter-big').innerText = l.l;
-    document.getElementById('letter-name').innerText = l.n;
-    document.getElementById('letter-sound').innerText = 'Son : ' + l.s;
-    document.getElementById('letter-example').innerText = 'Ex : ' + l.ex;
-    document.querySelectorAll('.letter-btn').forEach((btn,j) => {
-        btn.classList.toggle('bg-amber-400', j===i);
-        btn.classList.toggle('text-stone-900', j===i);
-        btn.classList.toggle('bg-white/10', j!==i);
-        btn.classList.toggle('text-stone-300', j!==i);
-    });
-    // Auto-speak the letter in Arabic
-    window.speakLetter();
+// Fonction pour cocher les lettres arabes
+window.toggleLetter = (idx, btnEl) => {
+    const learned = JSON.parse(localStorage.getItem('learnedLetters') || '{}');
+    learned[idx] = !learned[idx];
+    localStorage.setItem('learnedLetters', JSON.stringify(learned));
+    
+    if (learned[idx]) {
+        btnEl.classList.replace('border-stone-500', 'border-amber-400');
+        btnEl.classList.replace('text-transparent', 'text-stone-900');
+        btnEl.classList.add('bg-amber-400');
+    } else {
+        btnEl.classList.replace('border-amber-400', 'border-stone-500');
+        btnEl.classList.replace('text-stone-900', 'text-transparent');
+        btnEl.classList.remove('bg-amber-400');
+    }
+    
+    const count = Object.values(learned).filter(v => v).length;
+    const counterEl = document.getElementById('letters-counter');
+    if (counterEl) counterEl.innerText = `${count}/28`;
 };
 
-window.speakLetter = () => {
-    const letterEl = document.getElementById('letter-big');
-    const exampleEl = document.getElementById('letter-example');
-    if (!'speechSynthesis' in window) return;
+// Fonction pour cocher les Noms d'Allah
+window.toggleAllahName = (idx, btnEl) => {
+    // Empêche le clic de déclencher l'ouverture de la définition
+    event.stopPropagation();
+    
+    const learned = JSON.parse(localStorage.getItem('learnedNames') || '{}');
+    learned[idx] = !learned[idx];
+    localStorage.setItem('learnedNames', JSON.stringify(learned));
+
+    if (learned[idx]) {
+        btnEl.classList.replace('border-stone-500', 'border-emerald-400');
+        btnEl.classList.replace('text-transparent', 'text-stone-900');
+        btnEl.classList.add('bg-emerald-400');
+    } else {
+        btnEl.classList.replace('border-emerald-400', 'border-stone-500');
+        btnEl.classList.replace('text-stone-900', 'text-transparent');
+        btnEl.classList.remove('bg-emerald-400');
+    }
+    
+    const count = Object.values(learned).filter(v => v).length;
+    const counterEl = document.getElementById('allah-names-counter');
+    if (counterEl) counterEl.innerText = `${count}/99`;
+};
+
+// Fonction pour l'audio FORCÉ en Arabe
+window.speakLetterText = (text) => {
+    if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
-    // Speak the example word in Arabic for authentic pronunciation
-    const exampleText = exampleEl ? exampleEl.innerText.split('(')[0].trim() : letterEl.innerText;
-    const utt = new SpeechSynthesisUtterance(exampleText);
-    utt.lang = 'ar-SA';
-    utt.rate = 0.7;
+    
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'ar-SA'; // On force l'arabe
+    utt.rate = 0.8;
+    
+    // On cherche la bonne voix dans le système
+    const voices = window.speechSynthesis.getVoices();
+    const arabicVoice = voices.find(v => v.lang.startsWith('ar'));
+    if (arabicVoice) utt.voice = arabicVoice;
+    
     window.speechSynthesis.speak(utt);
 };
 
